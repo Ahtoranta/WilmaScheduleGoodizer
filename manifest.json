@@ -4,7 +4,7 @@
   "version": "1.0",
   "manifest_version": 3,
   "icons": {
-    "50": "/assets/icons/icons8-schedule-50.png"
+    "50": "/assets/icons/icons8-calendar-50.png"
   },
 
   "permissions": [
