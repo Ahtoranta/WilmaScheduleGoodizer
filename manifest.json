@@ -1,0 +1,25 @@
+{
+  "name": "Wilma schedule goodizer",
+  "description": "Human readable schedule for wilma",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons": {
+    "48": "/assets/icons/icons8-bot-48.png"
+  },
+
+  "permissions": [
+    "activeTab"
+  ],
+
+  "host_permissions": [
+    "https://*.inschool.fi/*/schedule"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [ "https://*.inschool.fi/*/schedule*" ],
+      "js": ["content-script.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
