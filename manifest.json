@@ -1,6 +1,6 @@
 {
   "name": "Wilma schedule goodizer",
-  "description": "Human readable schedule for wilma. Icon is from https://icons8.com/",
+  "description": "Human readable schedule for wilma. Calendar icon is from https://icons8.com/",
   "version": "1.0",
   "manifest_version": 3,
   "icons": {
