@@ -1,10 +1,10 @@
 {
   "name": "Wilma schedule goodizer",
-  "description": "Human readable schedule for wilma",
+  "description": "Human readable schedule for wilma. Icon is from https://icons8.com/",
   "version": "1.0",
   "manifest_version": 3,
   "icons": {
-    "48": "/assets/icons/icons8-bot-48.png"
+    "50": "/assets/icons/icons8-schedule-50.png"
   },
 
   "permissions": [
