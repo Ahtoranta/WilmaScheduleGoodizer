@@ -19,7 +19,6 @@
  */
 findDivsWithIdBlock = (schedule) => {
     for (const child of schedule.children) {
-        console.log(child.tagName)
         if (child.tagName === 'DIV' && child.className === 'block') {
             findSpansWithClassNameInfo(child)
         }
@@ -47,13 +46,16 @@ findSpansWithClassNameInfo = (block) => {
 findSpansWithTitleAttribute = (info) => {
     for (const child of info.children) {
         const title = child.getAttributeNode("title")
-        if (child.tagName === 'SPAN' && title) {
+        if (hasClass(child,'teachers') || hasClass(child,'rooms')) {
+            child.innerHTML = ''
+        } else {
             child.innerHTML = replaceStupidText(title.value)
         }
-        else if (child.tagName === 'A') {
-            child.innerHTML = ''
-        }
     }
+}
+
+function hasClass(element, className) {
+    return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
 }
 
 /**
@@ -64,8 +66,15 @@ findSpansWithTitleAttribute = (info) => {
  * "vSAA2 Saksa, A2 lkaste: 6"
  *
  * We are interested to see in innerHTML:
- * "Kuvataiteen syventävät opinnot"
- * "Saksa, A2"
+ * <div tabindex="0" class="block" data-weekday="Tiistai" data-block="14033" data-school="622449788" data-sijid="14033" style="width: 19.6%; height: 44px; left: 20.2%; top: 135px; background-color: rgb(166, 202, 240);" data-original-title="" title="">
+ *     <span aria-hidden="true" class="info" style="font-size: 14px; top: 6px;">
+ *  -->    <a target="_blank" rel="noopener" href="/!0416184/groups/72704" title="AI Suomen kieli ja kirjallisuus lkaste: 4" class="no-underline-link" style="font-size: 14px;"> AI</a>
+ *         <a target="_blank" rel="noopener" href="/!0416184/profiles/teachers/657" class="normal teachers profile-link no-underline-link" title="Huopainen Anne" style="font-size: 14px;"> AHu</a>
+ *         <a target="_blank" rel="noopener" href="/!0416184/profiles/rooms/372" class="normal rooms profile-link no-underline-link" title="222/4B" style="font-size: 14px;"> 222</a>
+ *     </span>
+ *     <span class="class" style="font-size: 14px; top: 6px;"></span>
+ *     <h3 class="sr-only">Tiistai: Alkamisaika10:15Päättymisaika11:00: AI: : </h3>
+ * </div>
  *
  * So split with ' ' and take parts 1 to length -2
  *
